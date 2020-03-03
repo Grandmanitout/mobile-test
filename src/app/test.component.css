@@ -1,0 +1,18 @@
+.bg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: url(https://www.ville-mordelles.fr/medias/2018/11/Mordelles-mairie-1.jpg);
+  opacity: 0.5;
+  background-size: cover;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+}
+
+.version {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  color: rgba(255, 255, 255, 0.43);
+}

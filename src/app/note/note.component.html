@@ -1,0 +1,19 @@
+<mat-nav-list style="position: sticky;top: 0px;background: white;z-index: 1;">
+	<h3 mat-subheader>Annotations</h3>
+</mat-nav-list>
+<div class="chat-history">
+	<ul>
+		<li class="clearfix" *ngFor="let message of messages">
+			<div class="message-data align-right">
+				<span class="message-data-time" >{{message.creation_date | timeAgo}}</span> &nbsp; &nbsp;
+				<span class="message-data-name"><a href="mailto:{{message.user_id}}">{{message.firstname}}</a></span> <i class="fa fa-circle me"></i>
+			</div>
+			<div class="message other-message float-right" (click)="copy()" [cdkCopyToClipboard]="message.content">
+				{{message.note_text}}
+			</div>
+		</li>
+	</ul>
+</div>
+<mat-form-field appearance="outline" class="inputNote" floatLabel="never">
+	<input matInput placeholder="Ecrire un message...">
+</mat-form-field>

@@ -1,0 +1,78 @@
+<div class="container">
+	<mat-toolbar color="primary">
+		<mat-toolbar-row>
+			<mat-form-field class="searchToolbar" appearance="outline" style="font-size:14px;width:100%;"
+				floatLabel="never">
+				<input matInput placeholder="Rechercher">
+				<button *ngIf="haveSelectedItems() && !haveAllSelectedItems()" matPrefix mat-icon-button (click)="$event.stopPropagation();">
+              <mat-icon>indeterminate_check_box</mat-icon>
+            </button>
+				<button *ngIf="haveSelectedItems() && haveAllSelectedItems()" matPrefix mat-icon-button (click)="$event.stopPropagation();">
+              <mat-icon>check_box</mat-icon>
+            </button>
+				<button *ngIf="!haveSelectedItems()" matPrefix mat-icon-button (click)="$event.stopPropagation();appservice.toggle()">
+              <mat-icon>menu</mat-icon>
+            </button>
+			</mat-form-field>
+			<span class="example-spacer"></span>
+
+			<button mat-icon-button *ngIf="haveSelectedItems()">
+            <mat-icon>delete</mat-icon>
+          </button>
+			<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+			<mat-menu #menu="matMenu">
+				<button mat-menu-item>
+              <mat-icon>dialpad</mat-icon>
+              <span>Redial</span>
+            </button>
+				<button mat-menu-item disabled>
+              <mat-icon>voicemail</mat-icon>
+              <span>Check voice mail</span>
+            </button>
+				<button mat-menu-item>
+              <mat-icon>notifications_off</mat-icon>
+              <span>Disable alerts</span>
+            </button>
+			</mat-menu>
+
+			<!--<a href="intent://user?screen_name=paul_kinlan#Intent;scheme=twitter;S.browser_fallback_url=https%3A%2F%2Ftwitter.com%2Fpaul_kinlan;end">PRINT INVOICE</a>
+    <a href="intent://scan/#Intent;scheme=zxing;package=com.google.zxing.client.android;end"> Take a QR code </a>
+    <a href="tel:0661970273"> test </a>
+    <a href="mailto:alex.orluc@xelians.fr"> test </a>-->
+		</mat-toolbar-row>
+	</mat-toolbar>
+	<cdk-virtual-scroll-viewport itemSize="88" class="example-viewport">
+		<mat-list role="list">
+			<h3 mat-subheader>Courriers à traiter</h3>
+			<ng-container *cdkVirtualFor="let item of items">
+				<mat-list-item role="listitem" (click)="toggleItem(item)" [class.selected]="item.selected">
+					<mat-icon mat-list-icon class="iconList" (click)="$event.stopPropagation();deselectItem(item)"
+						*ngIf="item.selected" (press)="onPress($event)" (pressup)="onPressUp($event,item)">check_box
+					</mat-icon>
+					<mat-icon mat-list-icon class="iconList" (click)="$event.stopPropagation();item.selected=true"
+						*ngIf="!item.selected && multipleSelect">check_box_outline_blank</mat-icon>
+					<mat-icon mat-list-icon class="iconList"
+						(click)="$event.stopPropagation();item.selected=true;multipleSelect=true"
+						*ngIf="!item.selected && !multipleSelect" (press)="onPress($event)"
+						(pressup)="onPressUp($event)">folder</mat-icon>
+					<mat-icon mat-list-icon class="iconList" (click)="$event.stopPropagation();openBottomSheet();"
+						*ngIf="multipleSelect && haveSingleSelectedItems() && item.selected">attach_file
+					</mat-icon>
+					<mat-icon mat-list-icon class="iconList" (click)="$event.stopPropagation();openNote();"
+						*ngIf="multipleSelect && haveSingleSelectedItems() && item.selected">message
+					</mat-icon>
+					<p mat-line>{{item.alt_identifier}} <span class="dateList">{{item.creationDate | timeAgo}}</span>
+					</p>
+					<p mat-line>{{item.subject}} </p>
+					<p mat-line style="font-size: 80%;opacity: 0.3;">{{item.senders}} </p>
+				</mat-list-item>
+			</ng-container>
+      <mat-list-item role="listitem" *ngIf="loading">
+					<p mat-line>Chargement ...</p>
+				</mat-list-item>
+		</mat-list>
+	</cdk-virtual-scroll-viewport>
+  <div style="position: absolute;bottom: 10px;background: #8080809c;padding: 10px;border-radius: 20px;font-size: 10px;font-weight: bold;right: 20px;color: white;">{{page}}</div>
+</div>

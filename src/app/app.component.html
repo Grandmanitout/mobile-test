@@ -1,0 +1,46 @@
+<div class="wrapper">
+  <mat-sidenav-container class="example-container">
+	<mat-sidenav #sidenav mode="over" [fixedInViewport]="true" [fixedTopGap]="0" [fixedBottomGap]="0" autoFocus="false"
+		class="example-sidenav">
+		<div style="display: flex;box-sizing: border-box;flex-direction: column;height:100%;">
+      <mat-list role="list">
+        <mat-list-item role="listitem"><span style="color:#24b0ed">Maarch</span>&nbsp;<small style="color:#f99830">courrier</small></mat-list-item>
+      </mat-list>
+			<mat-action-list>
+				<button mat-list-item (click)="save()" disableRipple>
+        	<img matListAvatar src="https://lh3.googleusercontent.com/proxy/hZPommIjJL0qMsK0IU1LCyh0VpkzuzQbUFqEyjFrn9zBVl02cIRBKQIgLp3IBtJJHAWtGBmRu3PsY3l9RpH-eNmC_7WHaQjR2cLdLbzikeLulGXE" alt="...">
+          <p mat-line>Luke Skywalker</p>
+      </button>
+			</mat-action-list>
+      <mat-divider></mat-divider>
+      <mat-action-list>
+        <h3 mat-subheader>Bannettes</h3>
+				<button mat-list-item disableRipple *ngFor="let basket of baskets">
+        	<mat-icon mat-list-icon class="iconList">folder</mat-icon>
+          <p mat-line style="display:flex;">
+            <span style="flex: 1;overflow: hidden;text-overflow: ellipsis;">{{basket.label}}</span>
+            <span style="font-size:80%;opacity: 0.3;">110</span>
+          </p>
+        </button>
+			</mat-action-list>
+			<span class="example-spacer"></span>
+      <mat-divider></mat-divider>
+			<mat-action-list>
+				<button mat-list-item disableRipple>
+        	<mat-icon mat-list-icon>settings</mat-icon>
+          <p mat-line>Paramètres</p>
+        </button>
+          <button mat-list-item disableRipple>
+        	<mat-icon mat-list-icon>exit_to_app</mat-icon>
+          <p mat-line>Se déconnecter </p>
+        </button>
+			</mat-action-list>
+		</div>
+	</mat-sidenav>
+
+	<mat-sidenav-content style="overflow:hidden;">
+    <router-outlet></router-outlet>
+	</mat-sidenav-content>
+</mat-sidenav-container>
+<app-size-detector></app-size-detector>
+</div>

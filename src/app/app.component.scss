@@ -1,0 +1,93 @@
+::ng-deep.panelContainer {
+  padding:0px !important;
+}
+.example-viewport {
+  flex: 1;
+  width: 100%;
+  border: 1px solid black;
+  background: white;
+
+  ::ng-deep.cdk-virtual-scroll-content-wrapper{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+}
+
+.example-item {
+
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border-top-color: rgba(0,0,0,.12);
+  border-top-width: 1px;
+  border-top-style: solid;
+  position: relative;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.example-box {
+  position: absolute;
+  top: 0px;
+  left:0px;
+  height: 100%;
+  width: 300px;
+  transition: all 0.5s;
+}
+
+.hold {
+  transition: none;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.checkboxTool  {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.selected {
+  background: #3f51b524;
+}
+
+.iconList{
+  color : #3f51b5;
+}
+
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.example-sidenav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+}
+
+.searchToolbar  {
+  ::ng-deep.mat-form-field-wrapper {
+    padding-bottom: 0px;
+  }
+}
+
+.dateList {
+  position: absolute;
+  right: 5px;
+  font-size: 80%;
+  opacity: 0.3;
+}

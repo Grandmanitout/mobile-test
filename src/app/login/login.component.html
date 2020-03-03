@@ -1,0 +1,28 @@
+<div mat-dialog-content class="bidule">
+	<div class="left-container" *ngIf="resizeSvc.format === 'desktops'">
+		<div class="imgtest">
+
+		</div>
+		<div class="welcome-txt">
+<span style="color:#24b0ed"><strong>Découvrez votre application via</strong></span>&nbsp;<a title="le guide de visite" href="https://docs.maarch.org/gitbook/html/MaarchCourrier/19.04/guu/home.html" target="_blank"><span style="color:#f99830;"><strong>le guide de visite en ligne</strong></span></a>
+		</div>
+	</div>
+
+	<div class="form">
+    <div class="logo"></div>
+		<mat-form-field appearance="fill">
+			<mat-label>Identifiant</mat-label>
+			<input matInput>
+  </mat-form-field>
+			<mat-form-field appearance="fill">
+				<mat-label>Mot de passe</mat-label>
+				<input matInput>
+        <mat-hint>
+<mat-checkbox disableRipple>Se souvenir de moi!</mat-checkbox>
+        </mat-hint>
+  </mat-form-field>
+    <button mat-raised-button color="primary" style="margin-top: 20px;" (click)="goTo()">Connexion</button>
+  <div class="forgot-psw">Oups ! J'ai oublié <a href='#'>mon mot de passe</a> !</div>
+	</div>
+
+</div>
